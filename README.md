@@ -155,8 +155,8 @@ Select Multiple Step and then select “Create cds.lib File” as shown in below
 
 Click the cds.lib file and save the file by clicking on Save option
 
-![image](https://github.com/user-attachments/assets/646e41be-4046-4fd7-8253-d00514dba99e)
 
+![image](https://github.com/user-attachments/assets/2d7c685c-0a0c-4222-9fd8-b21a8af381b7)
 
 ## Fig 4: cds.lib file Creation
 
@@ -166,7 +166,8 @@ Click the cds.lib file and save the file by clicking on Save option
 
 	We are simulating verilog design without using any libraries
 
-![image](https://github.com/user-attachments/assets/2d7c685c-0a0c-4222-9fd8-b21a8af381b7)
+
+![image](https://github.com/user-attachments/assets/646e41be-4046-4fd7-8253-d00514dba99e)
 
 
 ## Fig 5: Selection of Don’t include any libraries
