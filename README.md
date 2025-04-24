@@ -42,6 +42,8 @@ Functional Simulation:
       
 	After this you can see the window like below 
 
+![image](https://github.com/user-attachments/assets/a2e104c3-1371-405e-95de-fed246b2f31d)
+
 
 ## Fig 2: Invoke the Cadence Environment
 
@@ -58,6 +60,34 @@ Functional Simulation:
 
 */Program  for  4-Bit Up-Down Counter
 
+`timescale 1ns / 1 ns
+
+module counter(clk,m,rst,count); 
+
+input clk,m,rst;
+
+output reg [3:0] count; 
+
+always@(posedge clk or negedge rst) 
+
+begin
+
+if (!rst) 
+
+count=0; 
+
+else if(m)
+
+count=count+1; 
+
+else 
+
+count=count-1; 
+
+end
+
+endmodule
+
 	Use Save option or Ctrl+S to save the code or click on the save option from the top most right corner and close the text file.
 
 ## Creating Test bench:
@@ -68,6 +98,48 @@ Functional Simulation:
 
 */Test bench Program  for  4-Bit Up-Down Counter
 
+`timescale 1ns / 1ns 
+
+module counter_test; 
+
+reg clk,rst,m;
+
+wire [3:0]
+
+count; initial
+
+begin 
+
+clk=0; 
+
+rst=0;#5; 
+
+rst=1; 
+
+end 
+
+initial 
+
+begin 
+
+m=1; 
+
+#160 m=0;
+
+end
+
+counter counter1 (clk,m,rst, count); 
+
+always #5 clk=~clk;
+
+initial $monitor("Time=%t rst=%b clk=%b count=%b" , $time,rst,clk,count); 
+
+initial
+
+#320 $finish; 
+
+endmodule
+
 ### To Launch Simulation tool
 	linux:/> nclaunch -new&            // “-new” option is used for invoking NCVERILOG for the first time for any design
 
@@ -75,11 +147,16 @@ Functional Simulation:
 
 It will invoke the nclaunch window for functional simulation we can compile,elaborate and simulate it using Multiple step
 
+![image](https://github.com/user-attachments/assets/873dbee3-e52d-40d5-a04b-f67336944011)
+
+
 ## Fig 3: Setting Multi-step simulation
 
 Select Multiple Step and then select “Create cds.lib File” as shown in below figure
 
 Click the cds.lib file and save the file by clicking on Save option
+
+![image](https://github.com/user-attachments/assets/25c35ee3-6669-4316-bd68-93e268d87e40)
 
 ## Fig 4: cds.lib file Creation
 
@@ -88,6 +165,8 @@ Click the cds.lib file and save the file by clicking on Save option
 	Select “Don’t include any libraries (verilog design)” from “New cds.lib file” and click on “OK” as in below figure
 
 	We are simulating verilog design without using any libraries
+
+![image](https://github.com/user-attachments/assets/dc12860d-bb97-4320-8fe0-e24b1bde7825)
 
 ## Fig 5: Selection of Don’t include any libraries
 
@@ -98,6 +177,8 @@ Click the cds.lib file and save the file by clicking on Save option
 	Left side you can see the HDL files. Right side of the window has worklib and snapshots directories listed.
 
 	Worklib is the directory where all the compiled codes are stored while Snapshot will have output of elaboration which in turn goes for simulation
+
+![image](https://github.com/user-attachments/assets/23135378-e04c-45f7-be74-158670d2bda0)
 
 ## Fig 6: Nclaunch Window
 
@@ -122,6 +203,10 @@ i.e Cadence IES command for compile: ncverilog +access+rwc -compile fa.v
 Left side select the file and in Tools : launch verilog compiler with current selection will get enable. Click it to compile the code 
 
 Worklib is the directory where all the compiled codes are stored while Snapshot will have output of elaboration which in turn goes for simulation 
+
+![image](https://github.com/user-attachments/assets/c7382dbf-3d05-4250-8b47-2bb074754602)
+
+
 
 ## Fig 7: Compiled database in worklib
 
@@ -152,6 +237,8 @@ It contains statements that map logical library names to their physical director
     
 	After elaboration the file will come under snapshot. Select the test bench and simulate it. 
 
+![image](https://github.com/user-attachments/assets/80ec8c04-f47e-4053-b997-5dc330752036)
+
 ## Fig 8: Elaboration Launch Option
 
 ### Step 3: Simulation: – Simulate with the given test vectors over a period of time to observe the output behaviour. 
@@ -164,9 +251,16 @@ It contains statements that map logical library names to their physical director
 
 	Steps for simulation – Run the simulation command with simulator options
 
+![image](https://github.com/user-attachments/assets/6e2b9bba-afc8-416a-8630-9765406a38ed)
+
+
 ## Fig 9: Design Browser window for simulation
 
+![image](https://github.com/user-attachments/assets/55d89845-5d53-45e4-aabf-4d3684bb035b)
+
 ## Fig 10: Simulation Waveform Window
+
+![image](https://github.com/user-attachments/assets/0c9ff7f5-0bbd-4cbe-b566-8be86cae0d61)
 
 ## Fig 11: Simulation Waveform Window
 
